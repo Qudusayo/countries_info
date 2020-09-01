@@ -1,8 +1,9 @@
 import Card from "../Card";
-import Navbar from "../Navbar"
-import  Spinner from "../Spinner"
-import styles from './style.module.scss'
+import Navbar from "../Navbar";
+import Spinner from "../Spinner";
+import Searchs from "../Searchs";
 
+import styles from "./style.module.scss";
 
 import React, { Component } from "react";
 import request from "superagent";
@@ -20,6 +21,11 @@ class Index extends Component {
             countries: [],
             initial: 0,
             final: 20,
+            total: 0,
+            loop: 20,
+            url: "https://restcountries.eu/rest/v2/all",
+            filter: ""
+            // total: 250,
         };
 
         // Binds our scroll event handler
@@ -45,15 +51,63 @@ class Index extends Component {
         }, 500);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.loadCountries();
     }
+
+    changeRegion = (region) => {
+        this.setState({
+            error: false,
+            hasMore: true,
+            isLoading: false,
+            countries: [],
+            initial: 0,
+            final: 12,
+            loop: 12,
+            url: `https://restcountries.eu/rest/v2/region/${region}`,
+        });
+        this.loadCountries();
+        this.setState({filter: ""})
+    };
+
+    filterCountry = (beginsWith) => {
+        if (beginsWith) {
+            const filter = beginsWith[0].toUpperCase() + beginsWith.slice(1).toLowerCase();
+            this.setState({ filter })
+            request.get(this.state.url).then((result) => {
+                const positive = result.body.filter((country) =>
+                    country.name.startsWith(this.state.filter)
+                );
+
+                this.setState({
+                    error: false,
+                    hasMore: false,
+                    isLoading: false,
+                    countries: positive,
+                });
+            });
+        } else {
+            this.setState({
+                error: false,
+                hasMore: true,
+                isLoading: false,
+                countries: [],
+                initial: 0,
+                final: 20,
+                total: 0,
+                loop: 20,
+                url: "https://restcountries.eu/rest/v2/all",
+            });
+            this.loadCountries();
+        }
+    };
 
     loadCountries = () => {
         this.setState({ isLoading: true }, () => {
             request
-                .get("https://restcountries.eu/rest/v2/all")
+                .get(this.state.url)
                 .then((results) => {
+                    this.setState({ total: results.body.length });
                     let resulted = results.body.slice(
                         this.state.initial,
                         this.state.final
@@ -69,11 +123,14 @@ class Index extends Component {
 
                     // Merges the next countries into our existing countries
                     this.setState({
-                        hasMore: this.state.countries.length < 250,
                         isLoading: false,
                         countries: [...this.state.countries, ...nextCountries],
-                        initial: this.state.initial + 20,
-                        final: this.state.final + 20
+                        initial: this.state.initial + this.state.loop,
+                        final: this.state.final + this.state.loop,
+                    });
+                    this.setState({
+                        hasMore:
+                            this.state.countries.length < results.body.length,
                     });
                 })
                 .catch((err) => {
@@ -91,6 +148,10 @@ class Index extends Component {
         return (
             <>
                 <Navbar />
+                <Searchs
+                    changeRegion={this.changeRegion}
+                    filterCountry={this.filterCountry}
+                />
                 <div className={styles.container}>
                     {countries.map((country, index) => (
                         <Card
@@ -104,12 +165,10 @@ class Index extends Component {
                     ))}
                 </div>
                 {error && <div style={{ color: "#900" }}>{error}</div>}
-                {countries.length < 250 ? <Spinner /> : null}
-                {!hasMore && <div>You did it! You reached the end!</div>}
+                {hasMore ? <Spinner /> : null}
             </>
         );
     }
 }
-
 
 export default Index;
