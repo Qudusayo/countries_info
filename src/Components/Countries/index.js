@@ -86,7 +86,7 @@ class Index extends Component {
     };
 
     render() {
-        const { error, hasMore, isLoading, countries } = this.state;
+        const { error, hasMore, countries } = this.state;
 
         return (
             <>
