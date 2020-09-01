@@ -1,0 +1,92 @@
+.container {
+    background: #ffffff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: "Nunito", sans-serif;
+    width: 210px;
+    border-radius: 4px;
+    margin: 1.5em auto;
+
+    .img {
+        min-width: 170px;
+        height: 120px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+        box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .content {
+        font-size: 14px;
+        padding: 0 15px 15px;
+
+        p {
+            margin: 5px;
+        }
+
+        h3 {
+            font-weight: 800;
+        }
+
+        .bold {
+            font-weight: 600;
+        }
+    }
+
+    @media screen and (min-width: 1040px){
+        width: 22%;
+
+        .img {
+            min-width: 170px;
+            height: 180px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+
+
+    @media screen and (max-width: 940px){
+        width: 30%;
+
+        .img {
+            min-width: 170px;
+            height: 180px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+
+    @media screen and (max-width: 768px){
+        width: 40%;
+
+        .img {
+            min-width: 170px;
+            height: 180px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+
+    @media screen and (max-width: 500px){
+        width: 80%;
+
+        .img {
+            min-width: 170px;
+            height: 210px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+
+    @media screen and (max-width: 375px){
+        width: 90%;
+
+        .img {
+            min-width: 170px;
+            height: 210px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    }
+}
