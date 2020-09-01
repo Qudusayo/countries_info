@@ -4,7 +4,7 @@ import  Spinner from "../Spinner"
 import styles from './style.module.scss'
 
 
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import request from "superagent";
 import debounce from "lodash.debounce";
 
