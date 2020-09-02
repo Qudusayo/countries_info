@@ -7,5 +7,29 @@
     a{
         text-decoration: none;
         color: #000000;
+        display: block;
+        width: 210px;
+
+        @media screen and (min-width: 1040px){
+            width: 22%;
+        }
+    
+    
+        @media screen and (max-width: 940px){
+            width: 30%;
+        }
+    
+        @media screen and (max-width: 768px){
+            width: 40%;
+        }
+    
+        @media screen and (max-width: 500px){
+            width: 80%;
+        }
+    
+        @media screen and (max-width: 375px){
+            width: 90%;
+
+        }
     }
 }

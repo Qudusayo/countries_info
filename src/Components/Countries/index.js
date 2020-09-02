@@ -113,7 +113,6 @@ class Index extends Component {
                         this.state.final
                     );
                     // Creates a massaged array of user data
-                    console.log(results.body)
                     const nextCountries = resulted.map((country) => ({
                         name: country.name,
                         flag: country.flag,
@@ -156,9 +155,8 @@ class Index extends Component {
                 />
                 <div className={styles.container}>
                     {countries.map((country, index) => (
-                        <Link to={`/country/${country.alpha3Code}`}>
-                            <Card
-                                key={index}
+                        <Link key={index} to={`/country/${country.alpha3Code}`}>
+                            <Card 
                                 name={country.name}
                                 flag={country.flag}
                                 population={country.population}

@@ -1,5 +1,6 @@
 import React from "react";
 import Skeleton from "react-loading-skeleton";
+import  { withRouter } from "react-router-dom"
 
 import styles from "./style.module.scss";
 
@@ -31,4 +32,4 @@ function index(props) {
     );
 }
 
-export default index;
+export default withRouter(index);
