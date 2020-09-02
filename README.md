@@ -1,1 +1,1 @@
-<img src="public/preview.jpg" width="500px" style="display: block; margin: auto;"/>
+<img src="public/preview.png" width="500px" style="display: block; margin: auto;"/>
