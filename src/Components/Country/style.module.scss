@@ -1,0 +1,95 @@
+.container{
+    margin: 1em auto 4em auto;
+    width: 95%;
+    display: flex;
+    justify-content: space-around;
+    font-family: "Nunito", sans-serif;
+
+    .flaSkeleton{
+        width: 450px;
+        height: 300px;
+    }
+
+    .img{
+        max-width: 40%;
+        width: 450px;
+        height: 300px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @media screen  and (max-width: 900px){
+            width: 100%;
+            max-width: 100%;
+            height: 80vw;
+        }
+    }
+
+    h3{
+        font-size: 1em;
+        font-weight: 300;
+
+        .bold{
+            font-weight: 600;
+        }
+
+        @media screen  and (max-width: 900px){
+            font-size: 1.2em;
+        }
+    }
+
+    .info{
+        width: 45%;
+
+        @media screen  and (max-width: 900px){
+            width: 100%;
+        }
+    }
+
+    .flex{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        @media screen  and (max-width: 900px){
+            flex-direction: column;
+        }
+    }
+
+    .border{
+        display: inline-block;
+        font-size: 1.2em;
+        margin-top: 1.3em;
+    }
+
+    .borderCountry{
+        display: inline-block;
+        background-color: #989898;
+        margin: 0 .5em;
+        padding: 1px 4px;
+        border-radius: 4px;
+    }
+
+    @media screen  and (max-width: 900px){
+        flex-direction: column;
+    }
+}
+
+button{
+    outline: none;
+    border: none;
+    padding: .6em 2em;
+    margin: 2em 4em;
+    background-color: #ffffff;
+    box-shadow: 0 3px 4px rgba($color: #000000, $alpha: .2), 0 -3px 4px rgba($color: #000000, $alpha: .2);
+    font-family: "Nunito", sans-serif;
+    cursor: pointer;
+
+    &:hover{
+        background-color:darken($color: #ffffff, $amount: 5%);
+    }
+
+    @media screen  and (max-width: 900px){
+        margin: 2em 1.5em;
+    }
+}

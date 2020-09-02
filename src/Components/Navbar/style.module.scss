@@ -12,5 +12,13 @@ nav {
         font-family: "Nunito", sans-serif;
         font-size: 1.2em;
         margin: 0;
+
+        @media screen and (max-width: 425px){
+            font-size: 1em;
+        }
+    }
+
+    @media screen and (max-width: 425px){
+        padding: 1em ;
     }
 }

@@ -1,11 +1,11 @@
 import Card from "../Card";
-import Navbar from "../Navbar";
 import Spinner from "../Spinner";
 import Searchs from "../Searchs";
 
 import styles from "./style.module.scss";
 
 import React, { Component } from "react";
+import { Link } from "react-router-dom"
 import request from "superagent";
 import debounce from "lodash.debounce";
 
@@ -113,12 +113,15 @@ class Index extends Component {
                         this.state.final
                     );
                     // Creates a massaged array of user data
+                    console.log(results.body)
                     const nextCountries = resulted.map((country) => ({
                         name: country.name,
                         flag: country.flag,
                         population: country.population,
                         region: country.region,
                         capital: country.capital,
+                        alpha3Code: country.alpha3Code
+
                     }));
 
                     // Merges the next countries into our existing countries
@@ -147,21 +150,22 @@ class Index extends Component {
 
         return (
             <>
-                <Navbar />
                 <Searchs
                     changeRegion={this.changeRegion}
                     filterCountry={this.filterCountry}
                 />
                 <div className={styles.container}>
                     {countries.map((country, index) => (
-                        <Card
-                            key={index}
-                            name={country.name}
-                            flag={country.flag}
-                            population={country.population}
-                            region={country.region}
-                            capital={country.capital}
-                        />
+                        <Link to={`/country/${country.alpha3Code}`}>
+                            <Card
+                                key={index}
+                                name={country.name}
+                                flag={country.flag}
+                                population={country.population}
+                                region={country.region}
+                                capital={country.capital}
+                            />
+                        </Link>
                     ))}
                 </div>
                 {error && <div style={{ color: "#900" }}>{error}</div>}
