@@ -4,3 +4,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #ededed;
 }
+
+body > #root > .darkMode{
+  background-color: #212c35;
+}

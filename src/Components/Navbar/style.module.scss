@@ -8,7 +8,7 @@ nav {
     position: sticky;
     top: 0;
 
-    h2 {
+    h2, button {
         font-family: "Nunito", sans-serif;
         font-size: 1.2em;
         margin: 0;
@@ -18,7 +18,28 @@ nav {
         }
     }
 
+    button{
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
+
     @media screen and (max-width: 425px){
         padding: 1em ;
+    }
+}
+
+.darkMode{
+    background-color: #2B3945;
+    color: #efefef;
+
+    button{
+        background-color: #2B3945;
+        color: #efefef;
+
+        &:hover{
+            background-color: darken($color: #2B3945, $amount: 5%);
+        }
     }
 }

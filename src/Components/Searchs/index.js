@@ -9,7 +9,7 @@ function index(props)   {
         props.filterCountry(e.target.value)
     }
     return (
-        <div className={styles.bar}>
+        <div className={[styles.bar, props.darkMode ? styles.darkMode : styles.lightMode ].join(" ")}>
             <input placeholder="Search for country" onChange={filterCountryHandler} />
             <select onChange={regionChangeHandler}>
                 <option value="" hidden>Filter By Region</option>

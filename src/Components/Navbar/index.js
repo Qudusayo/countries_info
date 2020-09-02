@@ -1,11 +1,11 @@
 import React from 'react'
-import "./style.module.scss"
+import styles from "./style.module.scss"
 
-function index() {
+function index(props) {
     return (
-            <nav>
+            <nav className={ props.darkMode ? styles.darkMode : styles.lightMode }>
                 <h2>Where in the world</h2>
-                <h2>Dark Mode</h2>
+                <button onClick={props.switchTodarkMode}>Dark Mode</button>
             </nav>
     )
 }

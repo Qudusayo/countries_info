@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import request from "superagent";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 import styles from "./style.module.scss";
@@ -13,9 +13,10 @@ class Index extends Component {
         };
     }
     componentDidMount() {
+        console.log(`${this.props.history}`)
         request
             .get(
-                `https://restcountries.eu/rest/v2/alpha/${this.props.match.params.country}`
+                `https://restcountries.eu/rest/v2/alpha/nga`
             )
             .then((result) => {
                 this.setState({ info: result.body });
@@ -27,9 +28,9 @@ class Index extends Component {
         return (
             <SkeletonTheme highLightColor="#dededf" color="#dedede">
                 <Link to="/">
-                    <button>Back</button>
+                    <button className={ this.props.darkMode ? styles.darkBtn : styles.lightMode }>Back</button>
                 </Link>
-                <div className={styles.container}>
+                <div className={[ styles.container, this.props.darkMode ? styles.darkMode : styles.lightMode ].join(" ")}>
                     {this.state.info.flag ? (
                         <div
                             className={styles.img}
@@ -132,4 +133,4 @@ class Index extends Component {
     }
 }
 
-export default Index;
+export default withRouter(Index);

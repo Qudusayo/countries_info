@@ -152,8 +152,9 @@ class Index extends Component {
                 <Searchs
                     changeRegion={this.changeRegion}
                     filterCountry={this.filterCountry}
+                    darkMode={this.props.darkMode}
                 />
-                <div className={styles.container}>
+                <div className={[ styles.container, this.props.darkMode ? styles.darkMode : styles.lightMode ].join(" ")}>
                     {countries.map((country, index) => (
                         <Link key={index} to={`/country/${country.alpha3Code}`}>
                             <Card 
@@ -162,6 +163,7 @@ class Index extends Component {
                                 population={country.population}
                                 region={country.region}
                                 capital={country.capital}
+                                darkMode={this.props.darkMode}
                             />
                         </Link>
                     ))}

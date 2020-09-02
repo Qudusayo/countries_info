@@ -6,7 +6,7 @@ import styles from "./style.module.scss";
 
 function index(props) {
     return (
-        <div className={styles.container}>
+        <div className={[styles.container, props.darkMode ? styles.darkMode : styles.lightMode ].join(" ")}>
             <div
                 className={styles.img}
                 style={{ backgroundImage: `url('${props.flag}')` }}
