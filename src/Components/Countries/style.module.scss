@@ -35,7 +35,3 @@
 .darkMode {
     background-color: darken($color: #2b3945, $amount: 5%);
 }
-
-#root > .darkmode {
-    background-color: darken($color: #2b3945, $amount: 5%);
-}

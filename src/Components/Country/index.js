@@ -13,10 +13,9 @@ class Index extends Component {
         };
     }
     componentDidMount() {
-        console.log(`${this.props.history}`)
         request
             .get(
-                `https://restcountries.eu/rest/v2/alpha/nga`
+                `https://restcountries.eu/rest/v2/alpha/${this.props.match.params.country}`
             )
             .then((result) => {
                 this.setState({ info: result.body });
