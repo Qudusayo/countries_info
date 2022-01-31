@@ -23,7 +23,7 @@ class Index extends Component {
             final: 20,
             total: 0,
             loop: 20,
-            url: "https://restcountries.eu/rest/v2/all",
+            url: "https://restcountries.com/v3.1/all",
             filter: ""
             // total: 250,
         };
