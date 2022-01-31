@@ -64,7 +64,7 @@ class Index extends Component {
             initial: 0,
             final: 12,
             loop: 12,
-            url: `https://restcountries.eu/rest/v2/region/${region}`,
+            url: `https://restcountries.com/v3.1/region/${region}`,
         });
         this.loadCountries();
         this.setState({filter: ""})
@@ -76,7 +76,7 @@ class Index extends Component {
             this.setState({ filter })
             request.get(this.state.url).then((result) => {
                 const positive = result.body.filter((country) =>
-                    country.name.startsWith(this.state.filter)
+                    country.name.official.startsWith(this.state.filter)
                 );
 
                 this.setState({
@@ -115,11 +115,11 @@ class Index extends Component {
                     // Creates a massaged array of user data
                     const nextCountries = resulted.map((country) => ({
                         name: country.name,
-                        flag: country.flag,
+                        flag: country.flags.png,
                         population: country.population,
                         region: country.region,
                         capital: country.capital,
-                        alpha3Code: country.alpha3Code
+                        alpha3Code: country.cca3
 
                     }));
 

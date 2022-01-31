@@ -14,7 +14,7 @@ function index(props) {
                 {props.flag ? null : <Skeleton />}
             </div>
             <div className={styles.content}>
-                <h3>{props.name ? props.name : <Skeleton />}</h3>
+                <h3>{props.name ? props.name.official : <Skeleton />}</h3>
                 <p>
                     <span className={styles.bold}>Population: </span>
                     {props.population ? props.population : <Skeleton />}
