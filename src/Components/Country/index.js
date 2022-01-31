@@ -15,7 +15,7 @@ class Index extends Component {
     componentDidMount() {
         request
             .get(
-                `https://restcountries.eu/rest/v2/alpha/${this.props.match.params.country}`
+                `https://restcountries.com/v3.1/name/${this.props.match.params.country}`
             )
             .then((result) => {
                 this.setState({ info: result.body });
